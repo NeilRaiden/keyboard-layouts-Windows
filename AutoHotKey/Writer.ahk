@@ -108,7 +108,7 @@ $!+]::Send "⟯"
 $!+\::Send "◦"
 
 ; --- CapsL-Enter row: ASDFGHJKL:"
-$!+a::Send ""
+$!+a::Send "⊞"  ; U+229E, known as "SQUARED PLUS" (⊞) - substitute for Windows logo
 $!+s::Send "☺"
 $!+d::Send ""
 $!+f::Send ""
