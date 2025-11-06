@@ -1,13 +1,5 @@
 ﻿#Requires AutoHotkey v2.0
 
-; ɔɪ w ɛ r t ɑ ʌ ɪ ɒ p [ ] \
-; ə s d f g h j k l ; '
-; z ɜːr t ʃ v b n m , . /
-
-; aʊ ɪə eɪ ɑːr θ ɔ ʊ i əʊ ɔːr ⟨ ⟩ |
-; æ ʃ ər aɪ · ð dʒ « » ː " 
-; ʒ ɛər ɪər ju ⸰ ŋ u ‹ › ?  
-
 ; The "$" is the keyboard hook modifier 
 ;  (so the hotkey is only activated if actually pressed)
 ; The * wildcard modifier makes the hotkey work even if extra keys are pressed.
@@ -23,15 +15,25 @@ $LAlt::RAlt
 
 ;  Numbers row in layer 1 & 2 is exactly the same as on the regular QWERTY layout.
 
-; --- Layer 1 (unshifted) ---
+; ------ Layer 1 (unshifted) ------
+;┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬──────┐
+;│ ` │ 1 │ 2 │ 3 │ 4 │ 5 │ 6 │ 7 │ 8 │ 9 │ 0 │ - │ = │ bksp │
+;├───┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬────┤
+;│ tab │ɔɪ │ w │ ɛ │ r │ t │ ɑ │ ʌ │ ɪ │ ɒ │ p │ [ │ ] │ \  │
+;├─────┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴────┤
+;│ caps  │ ə │ s │ d │ f │ ɡ │ h │ j │ k │ l │ ; │ ' │  ent │
+;├───────┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴──────┤
+;│ shift   │ z │ɜr │tʃ │ v │ b │ n │ m │ , │ . │ / │  shift │
+;└─────────┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴────────┘
+
 ; --- TAB row:
 $q::Send "ɔɪ"
 $w::Send "w"
 $e::Send "ɛ"
 $r::Send "r"
 $t::Send "t"
-$y::Send "ɑ"   ; US
-;$y::Send "ɑː" ; UK
+$y::Send "ɑ"     ; US
+;$y::Send "ɑː"   ; UK
 $u::Send "ʌ"
 $i::Send "ɪ"
 $o::Send "ɒ"
@@ -45,7 +47,7 @@ $a::Send "ə"
 $s::Send "s"
 $d::Send "d"
 $f::Send "f"
-$g::Send "ɡ" ; U+0261 (not "g" U+0067)
+$g::Send "ɡ"     ; U+0261 (not "g" U+0067)
 $h::Send "h"
 $j::Send "j"
 $k::Send "k"
@@ -55,9 +57,9 @@ $'::Send "'"
 
 ; --- Shift row:
 $z::Send "z"
-$x::Send "ɜr"   ; US
-;$x::Send "ɜːʳ" ; UK
-;$x::Send "ɜːr" ; UK-rhotic
+$x::Send "ɜr"    ; US
+;$x::Send "ɜːʳ"  ; UK
+;$x::Send "ɜːr"  ; UK-rhotic
 $c::Send "tʃ"
 $v::Send "v"
 $b::Send "b"
@@ -67,7 +69,17 @@ $,::Send ","
 $.::Send "."
 $/::Send "/"
 
-; --- Layer 2 (shifted) ---
+; ------ Layer 2 (shifted) ------
+;┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬──────┐
+;│ ~ │ ! │ @ │ # │ $ │ % │ ^ │ & │ * │ ( │ ) │ _ │ + │ bksp │
+;├───┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬────┤
+;│ tab │aʊ │ɪə │eɪ │ɑr │ θ │ ɔ │ ʊ │ i │ɔʊ │ɔr │ { │ } │ |  │
+;├─────┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴────┤
+;│ caps  │ æ │ ʃ │ər │aɪ │ · │ ð │dʒ │ « │ » │ : │ " │  ent │
+;├───────┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴──────┤
+;│ shift   │ ʒ │er │ɪər│ju │ ⸰ │ ŋ │ u │ ‹ │ › │ ? │  shift │
+;└─────────┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴────────┘
+
 ; --- TAB row:
 $+q::Send "aʊ"
 $+w::Send "ɪə"
@@ -77,7 +89,7 @@ $+r::Send "ɑr"   ; US
 ;$+r::Send "ɑːr" ; UK-rhotic
 $+t::Send "θ"
 $+y::Send "ɔ"    ; US
-$+y::Send "ɔː"   ; UK
+;$+y::Send "ɔː"  ; UK
 $+u::Send "ʊ"
 $+i::Send "i"    ; US
 ;$+i::Send "iː"  ; UK
@@ -86,8 +98,8 @@ $+o::Send "ɔʊ"   ; US
 $+p::Send "ɔr"   ; US
 ;$+p::Send "ɔːʳ" ; UK
 ;$+p::Send "ɔːr" ; UK-rhotic
-$+[::Send "⟨"
-$+]::Send "⟩"
+$+[::Send "{"
+$+]::Send "}"
 $+\::Send "|"
 
 ; --- CapsLock row:
@@ -101,26 +113,36 @@ $+j::Send "dʒ"
 $+k::Send "«"
 $+l::Send "»"
 $+;::Send ":"
-$+'::Send " 
+$+'::Send '"' 
 
 ; --- Shift row:
 $+z::Send "ʒ"
 $+x::Send "er"   ; US
-;$+x::Send "ɛəʳ"  ; UK
-;$+x::Send "ɛər"  ; UK-rhotic
-$+c::Send "ɪər"
+;$+x::Send "eəʳ" ; UK
+;$+x::Send "eər" ; UK-rhotic
+$+c::Send "ɪər"  ; US (or "ɪr"?)
+;$+c::Send "ɪər" ; UK
 $+v::Send "ju"   ; US
-;$+v::Send "juː"  ; UK
+;$+v::Send "juː" ; UK
 $+b::Send "⸰"
 $+n::Send "ŋ"
 $+m::Send "u"    ; US
-;$+m::Send "uː"   ; UK
+;$+m::Send "uː"  ; UK
 $+,::Send "‹"
 $+.::Send "›"
 $+/::Send "?"  
 
 
-; ------ layer 3 (Alt+key) ---
+; ------ Layer 3 (Alt+key) ------
+;┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬──────┐
+;│ ´ │ ¹ │ ² │ ³ │ ⁴ │ ⁵ │ ⁶ │ ⁷ │ ⁸ │ ⁹ │ ⁰ │ → │ ≠ │ bksp │
+;├───┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬────┤
+;│ tab │ … │ ʍ │ e │ ʳ │ ɾ │   │ ↑ │   │ ˈ │ ˌ │ ⟨ │ ⟩ │ •  │
+;├─────┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴────┤
+;│ caps  │ “ │ ” │ ↓ │ ° │ ʔ │ ‐ │ ʤ │ ≤ │ ≥ │ ː │ × │  ent │
+;├───────┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴──────┤
+;│ shift   │ ‘ │ ’ │ ʧ │ ⁃ │ ○ │ – │ — │ < │ > │ ÷ │  shift │
+;└─────────┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴────────┘
 
 ; --- number row:
 $!`::Send "´"
@@ -180,7 +202,17 @@ $!/::Send "÷"
 ; --- Alt+Space:
 ;!(how to enter space here?)::Send " "
 
-; --- layer 4 (Alt+Shift+key) ---
+; ------ Layer 4 (Alt+Shift+key) ------
+;┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬──────┐
+;│ ≈ │ ₁ │ ₂ │ ₃ │ ₄ │ ₅ │ ₆ │ ₇ │ ₈ │ ₉ │ ₀ │ ← │ ± │ bksp │
+;├───┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬────┤
+;│ tab │ ⋯ │   │ ɜ │ ɹ │ ʰ │   │   │   │   │   │ ⟮ │ ⟯ │ ◦  │
+;├─────┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴────┤
+;│ caps  │ ɐ │ ☺ │ ɚ │   │ ˀ │ ‑ │   │   │ ɫ │ § │   │  ent │
+;├───────┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴──────┤
+;│ shift   │   │ ɝ │   │   │ ◌ │   │   │ ☒ │ ☐ │ ☑ │  shift │
+;└─────────┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴────────┘
+
 ; --- number row: ~!@#$%^&*()_+
 $!+`::Send "≈"
 $!+1::Send "₁"
@@ -212,7 +244,6 @@ $!+]::Send "⟯"
 $!+\::Send "◦"
 
 ; --- CapsL-Enter row: ASDFGHJKL:"
-;$!+a::Send "⊞"  ; U+229E, known as "SQUARED PLUS" (⊞) - substitute for Windows logo
 $!+a::Send "ɐ"
 $!+s::Send "☺"
 $!+d::Send "ɚ"
