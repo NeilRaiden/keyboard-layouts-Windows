@@ -1,6 +1,6 @@
 ﻿#Requires AutoHotkey v2.0
 
-; The "$" is the keyboard hook modifier 
+; The "$" is the keyboard hook modifier
 ;  (so the hotkey is only activated if actually pressed)
 ; The * wildcard modifier makes the hotkey work even if extra keys are pressed.
 ; pressing Esc sends LeftAlt key-code:
@@ -105,7 +105,8 @@ $+\::Send "|"
 ; --- CapsLock row:
 $+a::Send "æ"
 $+s::Send "ʃ"
-$+d::Send "ər"
+$+d::Send "ər"   ; US
+;$+d::Send "əʳ"  ; UK
 $+f::Send "aɪ"
 $+g::Send "·"
 $+h::Send "ð"
@@ -113,7 +114,7 @@ $+j::Send "dʒ"
 $+k::Send "«"
 $+l::Send "»"
 $+;::Send ":"
-$+'::Send '"' 
+$+'::Send '"'
 
 ; --- Shift row:
 $+z::Send "ʒ"
@@ -130,7 +131,7 @@ $+m::Send "u"    ; US
 ;$+m::Send "uː"  ; UK
 $+,::Send "‹"
 $+.::Send "›"
-$+/::Send "?"  
+$+/::Send "?"
 
 
 ; ------ Layer 3 (Alt+key) ------
@@ -231,7 +232,7 @@ $!+=::Send "±"
 ; --- TAB row: QWERTYUIOP{}|
 $!+q::Send "⋯"
 $!+w::Send ""
-$!+e::Send "ɜ" 
+$!+e::Send "ɜ"
 $!+r::Send "ɹ"
 $!+t::Send "ʰ"
 $!+y::Send ""
