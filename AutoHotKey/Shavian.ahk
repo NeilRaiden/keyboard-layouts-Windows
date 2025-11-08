@@ -1,23 +1,30 @@
 ﻿#Requires AutoHotkey v2.0
 
+; Copyright (c) 2025 Neil Raiden, LLC (AGPL v3)
+; <https://www.gnu.org/licenses/agpl-3.0.en.html>
+
 ;# Keyboard Layout Shavian (QWERTY+)
 ;It is the classic Shavian QWERTY keyboard layout with added common symbols to **AltGr** and **AltGr+Shift** layers.
 ;
 ; * The **Unshifted** and **Shifted** layers are exactly the same as **Shavian QWERTY**
 ; * The **AltGR** and **AltGr+Shift** layers are almost exactly identical as in **Writer+ (QWERTY)**
 ;
-; The "$" is the keyboard hook modifier 
-;  (so the hotkey is only activated if actually pressed)
-; The * wildcard modifier makes the hotkey work even if extra keys are pressed.
-; pressing Esc sends LeftAlt key-code:
+; ---
+; # The 3 key swaps:
+; 1. pressing Esc sends LeftAlt key-code:
+;    (system shortcuts like Ctrl+Alt+Del are now Ctrl+Esc+Del)
 $Esc::LAlt
 
-; Pressing CapsLock sends Esc key-code:
+; 2. Pressing CapsLock sends Esc key-code:
+; - The "*" wildcard modifier makes the hotkey work even if extra keys are pressed. Example above: "$*CapsLock::Esc". So even then any other key is pressed simultanously with CapsLock, only "Esc" will be sent. Some people prefer using "CapsLock+key" combos to act as "Ctrl+key" -- not implemented here (yet). 
 $*CapsLock::Esc
 
-; pressing Right Alt sends Left Alt key-code:
-; LeftAlt behaves like RightAlt
+; 3. pressing LeftAlt sends RightAlt key-code:
+;    (the LeftAlt now behaves like the RightAlt - activates layer 3 and 4)
 $LAlt::RAlt
+
+; AutoHotKey notes:
+; - The "$" is the keyboard hook modifier (so the hotkey is only activated if actually pressed).
 
 ; ------ Layer 1 (unshifted) ------
 ;┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬──────┐
@@ -29,6 +36,8 @@ $LAlt::RAlt
 ;├───────┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴──────┤
 ;│ shift   │ 𐑟 │ 𐑻 │ 𐑗 │ 𐑝 │ 𐑚 │ 𐑯 │ 𐑥 │ , │ . │ / │  shift │
 ;└─────────┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴────────┘
+
+; --- numbers row: (the same as standard QWERTY layout)
 
 ; --- TAB row:
 ;│ tab │ 𐑶 │ 𐑢 │ 𐑧 │ 𐑮 │ 𐑑 │ 𐑭 │ 𐑳 │ 𐑦 │ 𐑪 │ 𐑐 │ [ │ ] │ \  │
@@ -84,6 +93,8 @@ $/::Send "/"
 ;├───────┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴──────┤
 ;│ shift   │ 𐑠 │ 𐑺 │ 𐑽 │ 𐑿 │ ⸰ │ 𐑙 │ 𐑵 │ ‹ │ › │ ? │  shift │
 ;└─────────┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴────────┘
+
+; --- numbers row: (the same as standard QWERTY layout)
 
 ; --- TAB row:
 ;│ tab │ 𐑬 │ 𐑾 │ 𐑱 │ 𐑸 │ 𐑔 │ 𐑷 │ 𐑫 │ 𐑰 │ 𐑴 │ 𐑹 │ { │ } │  | │
@@ -199,9 +210,6 @@ $!,::Send "<"
 $!.::Send ">"
 $!/::Send "÷"
 
-; --- Alt+Space:
-;!(how to enter space here?)::Send " "
-
 
 ; ------ Layer 4 (Alt+Shift+key) ------
 ;┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬──────┐
@@ -259,10 +267,13 @@ $!+;::Send ""
 $!+'::Send ""
 
 ; --- Shift row: ZXCVBNM<>?
-$!+z::Send "⌥"
-$!+x::Send "⌘"
+;$!+z::Send "⌥"  ;(Apple symbol for "Option" key)
+$!+z::Send "" 
+;$!+x::Send "⌘"  ;(Apple symbol for "Command" key)
+$!+x::Send ""
 $!+c::Send "¢"
-$!+v::Send "⌃"
+;$!+v::Send "⌃"  ;(Apple symbol for "Control" key)
+$!+v::Send ""
 $!+b::Send "◌"
 $!+n::Send "̃"  ; U+0303 - combining tilde
 $!+m::Send "µ"
