@@ -1,20 +1,27 @@
 ﻿#Requires AutoHotkey v2.0
 
-; The * wildcard modifier makes the hotkey work even if extra keys are pressed.
-; pressing Esc sends LeftAlt key-code:
+; Copyright (c) 2025 Neil Raiden, LLC (AGPL v3)
+; <https://www.gnu.org/licenses/agpl-3.0.en.html>
+
+; ---
+;
+; # The 3 key swaps:
+; 1. pressing Esc sends LeftAlt key-code:
+;    (system shortcuts like Ctrl+Alt+Del are now Ctrl+Esc+Del)
 $Esc::LAlt
 
-; Pressing CapsLock sends Esc key-code:
+; 2. Pressing CapsLock sends Esc key-code:
+; - The "*" wildcard modifier makes the hotkey work even if extra keys are pressed. Example above: "$*CapsLock::Esc". So even then any other key is pressed simultanously with CapsLock, only "Esc" will be sent. Some people prefer using "CapsLock+key" combos to act as "Ctrl+key" -- not implemented here (yet). 
 $*CapsLock::Esc
 
-; pressing Right Alt sends Left Alt key-code:
-; LeftAlt behaves like RightAlt
+; 3. pressing LeftAlt sends RightAlt key-code:
+;    (the LeftAlt now behaves like the RightAlt - activates layer 3 and 4)
 $LAlt::RAlt
 
-; The "$" is the keyboard hook modifier 
-;  (so the hotkey is only activated if actually pressed)
+; AutoHotKey notes:
+; - The "$" is the keyboard hook modifier (so the hotkey is only activated if actually pressed).
 
-; ------ layer 1 ---
+; ------ layer 1 ------
 
 $e::Send "d"
 $r::Send "f"
@@ -156,10 +163,13 @@ $!+;::Send "₤"
 $!+'::Send ""
 
 ; --- Shift row: ZXCVBNM<>?
-$!+z::Send "⌥"
-$!+x::Send "⌘"
+;$!+z::Send "⌥"  ;(Apple symbol for "Option" key)
+$!+z::Send "" 
+;$!+x::Send "⌘"  ;(Apple symbol for "Command" key)
+$!+x::Send ""
 $!+c::Send "¢"
-$!+v::Send "⌃"
+;$!+v::Send "⌃"  ;(Apple symbol for "Control" key)
+$!+v::Send ""
 $!+b::Send "○"
 $!+n::Send "Œ"
 $!+m::Send "µ"
