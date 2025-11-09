@@ -35,6 +35,7 @@ $LAlt::RAlt
 ;└─────────┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴────────┘
 
 ; --- TAB row:
+;│ tab │ɔɪ │ w │ ɛ │ r │ t │ɑː │ ʌ │ ɪ │ ɒ │ p │ [ │ ] │ \  │
 $q::Send "ɔɪ"
 $w::Send "w"
 $e::Send "ɛ"
@@ -51,6 +52,7 @@ $]::Send "]"
 $\::Send "\"
 
 ; --- CapsLock row:
+;│ caps  │ ə │ s │ d │ f │ ɡ │ h │ j │ k │ l │ ; │ ' │  ent │
 $a::Send "ə"
 $s::Send "s"
 $d::Send "d"
@@ -64,6 +66,7 @@ $;::Send ";"
 $'::Send "'"
 
 ; --- Shift row:
+;│ shift   │ z │ɜːr│tʃ │ v │ b │ n │ m │ , │ . │ / │  shift │
 $z::Send "z"
 ;$x::Send "ɜr"   ; US
 ;$x::Send "ɜːʳ"  ; UK
@@ -89,9 +92,12 @@ $/::Send "/"
 ;│ shift   │ ʒ │eər│ɪər│juː│ ⸰ │ ŋ │uː │ ‹ │ › │ ? │  shift │
 ;└─────────┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴────────┘
 
+; --- numbers row:
+;│ ~ │ ! │ @ │ £ │ $ │ % │ ^ │ & │ * │ ( │ ) │ _ │ + │ bksp │
 $+3::Send "£"
 
 ; --- TAB row:
+;│ tab │aʊ │ɪə │eɪ │ɑːr│ θ │ɔː │ ʊ │iː │əʊ │ɔːr│ { │ } │ |  │
 $+q::Send "aʊ"
 $+w::Send "ɪə"
 $+e::Send "eɪ"
@@ -109,11 +115,12 @@ $+o::Send "əʊ"   ; UK
 ;$+p::Send "ɔr"  ; US
 ;$+p::Send "ɔːʳ" ; UK
 $+p::Send "ɔːr"  ; UK-rhotic
-$+[::Send "⟨"
-$+]::Send "⟩"
+$+[::Send "{{}"
+$+]::Send "{}}"
 $+\::Send "|"
 
 ; --- CapsLock row:
+;│ caps  │ æ │ ʃ │ər │aɪ │ · │ ð │dʒ │ « │ » │ : │ " │  ent │
 $+a::Send "æ"
 $+s::Send "ʃ"
 $+d::Send "ər"   ; US = UK rhotic
@@ -128,6 +135,7 @@ $+;::Send ":"
 $+'::Send '"'
 
 ; --- Shift row:
+;│ shift   │ ʒ │eər│ɪər│juː│ ⸰ │ ŋ │uː │ ‹ │ › │ ? │  shift │
 $+z::Send "ʒ"
 ;$+x::Send "er"  ; US
 ;$+x::Send "eəʳ" ; UK
@@ -157,6 +165,7 @@ $+/::Send "?"
 ;└─────────┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴────────┘
 
 ; --- number row:
+;│ ´ │ ¹ │ ² │ ³ │ ⁴ │ ⁵ │ ⁶ │ ⁷ │ ⁸ │ ⁹ │ ⁰ │ → │ ≠ │ bksp │
 $!`::Send "´"
 $!1::Send "¹"
 $!2::Send "²"
@@ -172,12 +181,13 @@ $!-::Send "→"
 $!=::Send "≠"
 
 ; --- TAB row:
+;│ tab │ … │ ʍ │ e │ ʳ │ ɾ │ # │ ↑ │   │ ˈ │ ˌ │ ⟨ │ ⟩ │ •  │
 $!q::Send "…"
 $!w::Send "ʍ"
 $!e::Send "e"
 $!r::Send "ʳ"
 $!t::Send "ɾ"
-$!y::Send "#"
+$!y::Send "{#}"
 $!u::Send "↑"
 $!i::Send ""
 $!o::Send "ˈ"
@@ -187,6 +197,7 @@ $!]::Send "⟩"
 $!\::Send "•"
 
 ; --- CapsL-Enter row:
+;│ caps  │ “ │ ” │ ↓ │ ° │ ʔ │ ‐ │ ʤ │ ≤ │ ≥ │ ː │ × │  ent │
 $!a::Send "“"
 $!s::Send "”"
 $!d::Send "↓"
@@ -200,6 +211,7 @@ $!;::Send "ː"
 $!'::Send "×"
 
 ; --- Shift row:
+;│ shift   │ ‘ │ ’ │ ʧ │ ⁃ │ ○ │ – │ — │ < │ > │ ÷ │  shift │
 $!z::Send "‘"
 $!x::Send "’"
 $!c::Send "ʧ"
@@ -227,6 +239,7 @@ $!/::Send "÷"
 ;└─────────┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴────────┘
 
 ; --- number row: ~!@£$%^&*()_+
+;│ ≈ │ ₁ │ ₂ │ ₃ │ ₄ │ ₅ │ ₆ │ ₇ │ ₈ │ ₉ │ ₀ │ ← │ ± │ bksp │
 $!+`::Send "≈"
 $!+1::Send "₁"
 $!+2::Send "₂"
@@ -242,6 +255,7 @@ $!+-::Send "←"
 $!+=::Send "±"
 
 ; --- TAB row: QWERTYUIOP{}|
+;│ tab │ ⋯ │   │ ɜ │ ɹ │ ʰ │   │   │   │   │   │ ⟮ │ ⟯ │ ◦  │
 $!+q::Send "⋯"
 $!+w::Send ""
 $!+e::Send "ɜ"
@@ -257,6 +271,7 @@ $!+]::Send "⟯"
 $!+\::Send "◦"
 
 ; --- CapsL-Enter row: ASDFGHJKL:"
+;│ caps  │ ɐ │ ☺ │ ɚ │   │ ˀ │ ‑ │   │   │ ɫ │ § │   │  ent │
 ;$!+a::Send "⊞"  ; U+229E, known as "SQUARED PLUS" (⊞) - substitute for Windows logo
 $!+a::Send "ɐ"
 $!+s::Send "☺"
@@ -271,6 +286,7 @@ $!+;::Send "§"
 $!+'::Send ""
 
 ; --- Shift row: ZXCVBNM<>?
+;│ shift   │   │ ɝ │   │   │ ◌ │   │   │ ☒ │ ☐ │ ☑ │  shift │
 $!+z::Send ""
 $!+x::Send "ɝ"
 $!+c::Send ""
