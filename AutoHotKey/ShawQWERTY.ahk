@@ -222,6 +222,7 @@ $!/::Send "÷"
 ;│ shift   │ ⌥ │ ⌘ │ ¢ │ ⌃ │ ◌ │ ◌̃ │ µ │ ☒ │ ☐ │ ☑ │  shift │
 ;└─────────┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴────────┘
 ; Alt+Shift+n ◌̃  U+0303 - combining tilde
+; The symbols [⌥ ⌘ ⌃]  are Apple keyboard labesl - not used in Windows
 
 ; --- number row: ~!@#$%^&*()_+
 $!+`::Send "≈"
