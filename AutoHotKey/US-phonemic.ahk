@@ -35,6 +35,7 @@ $LAlt::RAlt
 ;└─────────┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴────────┘
 
 ; --- TAB row:
+;│ tab │ɔɪ │ w │ ɛ │ r │ t │ ɑ │ ʌ │ ɪ │ ɒ │ p │ [ │ ] │ \  │
 $q::Send "ɔɪ"
 $w::Send "w"
 $e::Send "ɛ"
@@ -51,6 +52,7 @@ $]::Send "]"
 $\::Send "\"
 
 ; --- CapsLock row:
+;│ caps  │ ə │ s │ d │ f │ ɡ │ h │ j │ k │ l │ ; │ ' │  ent │
 $a::Send "ə"
 $s::Send "s"
 $d::Send "d"
@@ -64,6 +66,7 @@ $;::Send ";"
 $'::Send "'"
 
 ; --- Shift row:
+;│ shift   │ z │ɜr │tʃ │ v │ b │ n │ m │ , │ . │ / │  shift │
 $z::Send "z"
 $x::Send "ɜr"    ; US
 ;$x::Send "ɜːʳ"  ; UK
@@ -89,6 +92,7 @@ $/::Send "/"
 ;└─────────┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴────────┘
 
 ; --- TAB row:
+;│ tab │aʊ │ɪə │eɪ │ɑr │ θ │ ɔ │ ʊ │ i │ɔʊ │ɔr │ { │ } │ |  │
 $+q::Send "aʊ"
 $+w::Send "ɪə"
 $+e::Send "eɪ"
@@ -106,11 +110,13 @@ $+o::Send "ɔʊ"   ; US
 $+p::Send "ɔr"   ; US
 ;$+p::Send "ɔːʳ" ; UK
 ;$+p::Send "ɔːr" ; UK-rhotic
-$+[::Send "{"
-$+]::Send "}"
+$+[::Send "{{}"
+$+]::Send "{}}"
 $+\::Send "|"
 
 ; --- CapsLock row:
+;│ caps  │ æ │ ʃ │ər │aɪ │ · │ ð │dʒ │ « │ » │ : │ " │  ent │
+;│ shift   │ ʒ │er │ɪər│ju │ ⸰ │ ŋ │ u │ ‹ │ › │ ? │  shift │
 $+a::Send "æ"
 $+s::Send "ʃ"
 $+d::Send "ər"   ; US
