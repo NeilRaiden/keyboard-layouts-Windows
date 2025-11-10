@@ -38,5 +38,6 @@ Notes to self:
 - to use `sha256` it must be specified both in the command lines of both: the `New-SelfSignedCertificate` and the `signtool.exe`.
 - `New-SelfSignedCertificate ... -HashAlgorithm SHA256` and `signtool.exe ... /fd sha256`
 - How to add "Timestamp"? Is it necessary?
-
+- `signtool.exe timestamp /tr http://timestamp.digicert.com /td SHA256 ... `
+- `signtool.exe sign /fd SHA256 exe-to-sign.exe`
 
