@@ -266,6 +266,9 @@ $!,::Send "“"
 $!.::Send "”"
 $!/::Send "…"
 
+; --- Alt+Space: Em-Space (space length equal to font height)
+!Space::Send "{U+2003}"
+
 ; ------ Layer 4 (Alt+Shift+key) ------
 ;┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬──────┐
 ;│ ` │ ´ │ @ │ # │ $ │ % │ ^ │ & │ × │ ÷ │ < │ > │ + │ bksp │
@@ -335,5 +338,8 @@ $!+m::Send "—"
 $!+,::Send "‘"
 $!+.::Send "’"
 $!+/::Send ""
+
+; --- Alt+Shift+Space: zero-width space
+!+Space::Send "{U+200B}"
 
 ; --- end

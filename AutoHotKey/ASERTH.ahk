@@ -134,6 +134,10 @@ $!,::Send "÷"
 $!.::Send "‹"
 $!/::Send "›"
 
+; --- Alt+Space: Em-Space (space length equal to font height)
+!Space::Send "{U+2003}"
+
+
 ; --- layer 4 (Alt+Shift+key) ---
 ; ┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬──────┐
 ; │ ≈ │ ₁ │ ₂ │ ₃ │ ₄ │ ₅ │ ₆ │ ₇ │ ₈ │ ₉ │ ₀ │ ← │ ± │ bksp │
@@ -207,5 +211,8 @@ $!+m::Send "µ"
 $!+,::Send "☒"
 $!+.::Send "☐"
 $!+/::Send "☑"
+
+; --- Alt+Shift+Space: zero-width space
+!+Space::Send "{U+200B}"
 
 ; --- end

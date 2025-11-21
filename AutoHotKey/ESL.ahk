@@ -36,6 +36,7 @@ $LAlt::RAlt
 ; Alt+m ◌̃ - (U+0303) combining tilde (for nasalization)
 
 ; --- number row:
+;│ ´ │ ¹ │ ² │ ³ │ ⁴ │ ⁵ │ ⁶ │ ⁷ │ ⁸ │ ⁹ │ ⁰ │ → │ ≠ │ bksp │
 $!`::Send "´"
 $!1::Send "¹"
 $!2::Send "²"
@@ -93,8 +94,8 @@ $!,::Send "ˈ"
 $!.::Send "ˌ"
 $!/::Send "ʔ"
 
-; --- Alt+Space:
-;!(how to enter space here?)::Send " "
+; --- Alt+Space: Em-Space (space length equal to font height)
+!Space::Send "{U+2003}"
 
 
 ; ------ Layer 4 (Alt+Shift+key) ------
@@ -113,6 +114,7 @@ $!/::Send "ʔ"
 ; Alt+Shift+g ◌̱  - U+0331 combining macron below
 
 ; --- number row: ~!@#$%^&*()_+
+;│ ≈ │ ₁ │ ₂ │ ₃ │ ₄ │ ₅ │ ₆ │ ₇ │ ₈ │ ₉ │ ₀ │ ← │ ± │ bksp │
 $!+`::Send "≈"
 $!+1::Send "₁"
 $!+2::Send "₂"
@@ -169,5 +171,8 @@ $!+m::Send "—"
 $!+,::Send "‹"
 $!+.::Send "›"
 $!+/::Send "÷"
+
+; --- Alt+Shift+Space: zero-width space
+!+Space::Send "{U+200B}"
 
 ; --- end

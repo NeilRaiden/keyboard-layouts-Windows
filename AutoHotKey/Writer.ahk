@@ -38,6 +38,7 @@ $LAlt::RAlt
 ; shift+i ◌̈ U+0308 combining diaeresis (umlaut)
 
 ; --- number row:
+;│ ´ │ ¹ │ ² │ ³ │ ⁴ │ ⁵ │ ⁶ │ ⁷ │ ⁸ │ ⁹ │ ⁰ │ → │ ≠ │ bksp │
 $!`::Send "´"
 $!1::Send "¹"
 $!2::Send "²"
@@ -53,6 +54,7 @@ $!-::Send "→"
 $!=::Send "≠"
 
 ; --- TAB row:
+;│ tab │ … │ ◌̀ │ ◌́ │ ® │ ™ │ √ │ ↑ │ ◌̈ │ ø │ ℗ │ ⟨ │ ⟩ │ •  │
 $!q::Send "…"
 $!w::Send "̀" ; U+0300 combining grave mark
 $!e::Send "́" ; U+0301 combining acute mark
@@ -68,6 +70,7 @@ $!]::Send "⟩"
 $!\::Send "•"
 
 ; --- CapsL-Enter row:
+;│ caps  │ “ │ ” │ ↓ │ ° │ æ │ ‐ │ œ │ « │ » │ § │ × │  ent │
 $!a::Send "“"
 $!s::Send "”"
 $!d::Send "↓"
@@ -81,6 +84,7 @@ $!;::Send "§"
 $!'::Send "×"
 
 ; --- Shift row:
+;│ shift   │ ‘ │ ’ │ © │ ⁃ │ · │ – │ — │ ‹ │ › │ ÷ │  shift │
 $!z::Send "‘"
 $!x::Send "’"
 $!c::Send "©"
@@ -92,8 +96,8 @@ $!,::Send "‹"
 $!.::Send "›"
 $!/::Send "÷"
 
-; --- Alt+Space:
-;!(how to enter space here?)::Send " "
+; --- Alt+Space: Em-Space (space length equal to font height)
+!Space::Send "{U+2003}"
 
 
 ; ------ Layer 4 (Alt+Shift+key) ------
@@ -109,6 +113,7 @@ $!/::Send "÷"
 ; Alt+Shift+n ◌̃  U+0303 - combining tilde
 
 ; --- number row: ~!@#$%^&*()_+
+;│ ≈ │ ₁ │ ₂ │ ₃ │ ₄ │ ₅ │ ₆ │ ₇ │ ₈ │ ₉ │ ₀ │ ← │ ± │ bksp │
 $!+`::Send "≈"
 $!+1::Send "₁"
 $!+2::Send "₂"
@@ -124,6 +129,7 @@ $!+-::Send "←"
 $!+=::Send "±"
 
 ; --- TAB row: QWERTYUIOP{}|
+;│ tab │ ⌜ │ ⌝ │ ⌞ │ ⌟ │ ‰ │   │   │   │ Ø │ π │ ⟮ │ ⟯ │ ◦  │
 $!+q::Send "⌜"
 $!+w::Send "⌝"
 $!+e::Send "⌞" 
@@ -139,6 +145,7 @@ $!+]::Send "⟯"
 $!+\::Send "◦"
 
 ; --- CapsL-Enter row: ASDFGHJKL:"
+;│ caps  │ ⊞ │ ☺ │   │   │ Æ │ ‑ │ Œ │   │ ₤ │   │   │  ent │
 $!+a::Send "⊞"  ; U+229E, known as "SQUARED PLUS" (⊞) - substitute for Windows logo
 $!+s::Send "☺"
 $!+d::Send ""
@@ -152,6 +159,7 @@ $!+;::Send ""
 $!+'::Send ""
 
 ; --- Shift row: ZXCVBNM<>?
+;│ shift   │ ⌥ │ ⌘ │ ¢ │ ⌃ │ ○ │ ◌̃ │ µ │ ☒ │ ☐ │ ☑ │  shift │
 $!+z::Send "⌥"
 $!+x::Send "⌘"
 $!+c::Send "¢"
@@ -162,5 +170,8 @@ $!+m::Send "µ"
 $!+,::Send "☒"
 $!+.::Send "☐"
 $!+/::Send "☑"
+
+; --- Alt+Shift+Space: zero-width space
+!+Space::Send "{U+200B}"
 
 ; --- end

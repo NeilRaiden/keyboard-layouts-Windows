@@ -116,7 +116,6 @@ $+\::Send "|"
 
 ; --- CapsLock row:
 ;│ caps  │ æ │ ʃ │ər │aɪ │ · │ ð │dʒ │ « │ » │ : │ " │  ent │
-;│ shift   │ ʒ │er │ɪər│ju │ ⸰ │ ŋ │ u │ ‹ │ › │ ? │  shift │
 $+a::Send "æ"
 $+s::Send "ʃ"
 $+d::Send "ər"   ; US
@@ -131,6 +130,7 @@ $+;::Send ":"
 $+'::Send '"'
 
 ; --- Shift row:
+;│ shift   │ ʒ │er │ɪər│ju │ ⸰ │ ŋ │ u │ ‹ │ › │ ? │  shift │
 $+z::Send "ʒ"
 $+x::Send "er"   ; US
 ;$+x::Send "eəʳ" ; UK
@@ -160,6 +160,7 @@ $+/::Send "?"
 ;└─────────┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴────────┘
 
 ; --- number row:
+;│ ´ │ ¹ │ ² │ ³ │ ⁴ │ ⁵ │ ⁶ │ ⁷ │ ⁸ │ ⁹ │ ⁰ │ → │ ≠ │ bksp │
 $!`::Send "´"
 $!1::Send "¹"
 $!2::Send "²"
@@ -175,6 +176,7 @@ $!-::Send "→"
 $!=::Send "≠"
 
 ; --- TAB row:
+;│ tab │ … │ ʍ │ e │ ʳ │ ɾ │   │ ↑ │   │ ˈ │ ˌ │ ⟨ │ ⟩ │ •  │
 $!q::Send "…"
 $!w::Send "ʍ"
 $!e::Send "e"
@@ -190,6 +192,7 @@ $!]::Send "⟩"
 $!\::Send "•"
 
 ; --- CapsL-Enter row:
+;│ caps  │ “ │ ” │ ↓ │ ° │ ʔ │ ‐ │ ʤ │ ≤ │ ≥ │ ː │ × │  ent │
 $!a::Send "“"
 $!s::Send "”"
 $!d::Send "↓"
@@ -203,6 +206,7 @@ $!;::Send "ː"
 $!'::Send "×"
 
 ; --- Shift row:
+;│ shift   │ ‘ │ ’ │ ʧ │ ⁃ │ ○ │ – │ — │ < │ > │ ÷ │  shift │
 $!z::Send "‘"
 $!x::Send "’"
 $!c::Send "ʧ"
@@ -214,8 +218,8 @@ $!,::Send "<"
 $!.::Send ">"
 $!/::Send "÷"
 
-; --- Alt+Space:
-;!(how to enter space here?)::Send " "
+; --- Alt+Space: Em-Space (space length equal to font height)
+!Space::Send "{U+2003}"
 
 ; ------ Layer 4 (Alt+Shift+key) ------
 ;┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬──────┐
@@ -229,6 +233,7 @@ $!/::Send "÷"
 ;└─────────┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴────────┘
 
 ; --- number row: ~!@#$%^&*()_+
+;│ ≈ │ ₁ │ ₂ │ ₃ │ ₄ │ ₅ │ ₆ │ ₇ │ ₈ │ ₉ │ ₀ │ ← │ ± │ bksp │
 $!+`::Send "≈"
 $!+1::Send "₁"
 $!+2::Send "₂"
@@ -244,6 +249,7 @@ $!+-::Send "←"
 $!+=::Send "±"
 
 ; --- TAB row: QWERTYUIOP{}|
+;│ tab │ ⋯ │   │ ɜ │ ɹ │ ʰ │   │   │   │   │   │ ⟮ │ ⟯ │ ◦  │
 $!+q::Send "⋯"
 $!+w::Send ""
 $!+e::Send "ɜ"
@@ -259,6 +265,7 @@ $!+]::Send "⟯"
 $!+\::Send "◦"
 
 ; --- CapsL-Enter row: ASDFGHJKL:"
+;│ caps  │ ɐ │ ☺ │ ɚ │   │ ˀ │ ‑ │   │   │ ɫ │ § │   │  ent │
 $!+a::Send "ɐ"
 $!+s::Send "☺"
 $!+d::Send "ɚ"
@@ -272,6 +279,7 @@ $!+;::Send "§"
 $!+'::Send ""
 
 ; --- Shift row: ZXCVBNM<>?
+;│ shift   │   │ ɝ │   │   │ ◌ │   │   │ ☒ │ ☐ │ ☑ │  shift │
 $!+z::Send ""
 $!+x::Send "ɝ"
 $!+c::Send ""
@@ -282,5 +290,8 @@ $!+m::Send ""
 $!+,::Send "☒"
 $!+.::Send "☐"
 $!+/::Send "☑"
+
+; --- Alt+Shift+Space: zero-width space
+!+Space::Send "{U+200B}"
 
 ; --- end

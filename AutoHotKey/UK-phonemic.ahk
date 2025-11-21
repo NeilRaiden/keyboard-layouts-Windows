@@ -35,7 +35,10 @@ $LAlt::RAlt
 ;│ shift   │ z │ɜːʳ│tʃ │ v │ b │ n │ m │ , │ . │ / │  shift │
 ;└─────────┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴────────┘
 
+; --- numbers row is the same as on standard layout.
+
 ; --- TAB row:
+;│ tab │ɔɪ │ w │ ɛ │ r │ t │ɑː │ ʌ │ ɪ │ ɒ │ p │ [ │ ] │ \  │
 $q::Send "ɔɪ"
 $w::Send "w"
 $e::Send "ɛ"
@@ -52,6 +55,7 @@ $]::Send "]"
 $\::Send "\"
 
 ; --- CapsLock row:
+;│ caps  │ ə │ s │ d │ f │ ɡ │ h │ j │ k │ l │ ; │ ' │  ent │
 $a::Send "ə"
 $s::Send "s"
 $d::Send "d"
@@ -65,6 +69,7 @@ $;::Send ";"
 $'::Send "'"
 
 ; --- Shift row:
+;│ shift   │ z │ɜːʳ│tʃ │ v │ b │ n │ m │ , │ . │ / │  shift │
 $z::Send "z"
 ;$x::Send "ɜr"  ; US
 $x::Send "ɜːʳ"  ; UK
@@ -89,9 +94,12 @@ $/::Send "/"
 ;│ shift   │ ʒ │eəʳ│ɪəʳ│juː│ ⸰ │ ŋ │uː │ ‹ │ › │ ? │  shift │
 ;└─────────┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴────────┘
 
+; --- numbers row is the same except for the pound sing:
+;│ ~ │ ! │ @ │ £ │ $ │ % │ ^ │ & │ * │ ( │ ) │ _ │ + │ bksp │
 $+3::Send "£"
 
 ; --- TAB row:
+;│ tab │aʊ │ɪə │eɪ │ɑːʳ│ θ │ɔː │ ʊ │iː │əʊ │ɔːʳ│ { │ } │ |  │
 $+q::Send "aʊ"
 $+w::Send "ɪə"
 $+e::Send "eɪ"
@@ -114,6 +122,7 @@ $+]::Send "{}}"
 $+\::Send "|"
 
 ; --- CapsLock row:
+;│ caps  │ æ │ ʃ │əʳ │aɪ │ · │ ð │dʒ │ « │ » │ : │ " │  ent │
 $+a::Send "æ"
 $+s::Send "ʃ"
 ;$+d::Send "ər"  ; US = UK rhotic
@@ -128,6 +137,7 @@ $+;::Send ":"
 $+'::Send '"'
 
 ; --- Shift row:
+;│ shift   │ ʒ │eəʳ│ɪəʳ│juː│ ⸰ │ ŋ │uː │ ‹ │ › │ ? │  shift │
 $+z::Send "ʒ"
 ;$+x::Send "er"  ; US
 $+x::Send "eəʳ"  ; UK
@@ -145,7 +155,7 @@ $+.::Send "›"
 $+/::Send "?"
 
 
-; ------ »ayer 3 (Alt+key) ------
+; ------ Layer 3 (Alt+key) ------
 ;┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬──────┐
 ;│ ´ │ ¹ │ ² │ ³ │ ⁴ │ ⁵ │ ⁶ │ ⁷ │ ⁸ │ ⁹ │ ⁰ │ → │ ≠ │ bksp │
 ;├───┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬────┤
@@ -157,6 +167,7 @@ $+/::Send "?"
 ;└─────────┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴────────┘
 
 ; --- number row:
+;│ ´ │ ¹ │ ² │ ³ │ ⁴ │ ⁵ │ ⁶ │ ⁷ │ ⁸ │ ⁹ │ ⁰ │ → │ ≠ │ bksp │
 $!`::Send "´"
 $!1::Send "¹"
 $!2::Send "²"
@@ -172,6 +183,7 @@ $!-::Send "→"
 $!=::Send "≠"
 
 ; --- TAB row:
+;│ tab │ … │ ʍ │ e │ ʳ │ ɾ │ # │ ↑ │   │ ˈ │ ˌ │ ⟨ │ ⟩ │ •  │
 $!q::Send "…"
 $!w::Send "ʍ"
 $!e::Send "e"
@@ -187,6 +199,7 @@ $!]::Send "⟩"
 $!\::Send "•"
 
 ; --- CapsL-Enter row:
+;│ caps  │ “ │ ” │ ↓ │ ° │ ʔ │ ‐ │ ʤ │ ≤ │ ≥ │ ː │ × │  ent │
 $!a::Send "“"
 $!s::Send "”"
 $!d::Send "↓"
@@ -200,6 +213,7 @@ $!;::Send "ː"
 $!'::Send "×"
 
 ; --- Shift row:
+;│ shift   │ ‘ │ ’ │ ʧ │ ⁃ │ ○ │ – │ — │ < │ > │ ÷ │  shift │
 $!z::Send "‘"
 $!x::Send "’"
 $!c::Send "ʧ"
@@ -210,6 +224,9 @@ $!m::Send "—"
 $!,::Send "<"
 $!.::Send ">"
 $!/::Send "÷"
+
+; --- Alt+Space: Em-Space (space length equal to font height)
+!Space::Send "{U+2003}"
 
 
 ; ------ Layer 4 (Alt+Shift+key) ------
@@ -224,6 +241,7 @@ $!/::Send "÷"
 ;└─────────┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴────────┘
 
 ; --- number row: ~!@£$%^&*()_+
+;│ ≈ │ ₁ │ ₂ │ ₃ │ ₄ │ ₅ │ ₆ │ ₇ │ ₈ │ ₉ │ ₀ │ ← │ ± │ bksp │
 $!+`::Send "≈"
 $!+1::Send "₁"
 $!+2::Send "₂"
@@ -239,6 +257,7 @@ $!+-::Send "←"
 $!+=::Send "±"
 
 ; --- TAB row: QWERTYUIOP{}|
+;│ tab │ ⋯ │   │ ɜ │ ɹ │ ʰ │   │   │   │   │   │ ⟮ │ ⟯ │ ◦  │
 $!+q::Send "⋯"
 $!+w::Send ""
 $!+e::Send "ɜ"
@@ -254,6 +273,7 @@ $!+]::Send "⟯"
 $!+\::Send "◦"
 
 ; --- CapsL-Enter row: ASDFGHJKL:"
+;│ caps  │ ɐ │ ☺ │ ɚ │   │ ˀ │ ‑ │   │   │ ɫ │ § │   │  ent │
 ;$!+a::Send "⊞"  ; U+229E, known as "SQUARED PLUS" (⊞) - substitute for Windows logo
 $!+a::Send "ɐ"
 $!+s::Send "☺"
@@ -268,6 +288,7 @@ $!+;::Send "§"
 $!+'::Send ""
 
 ; --- Shift row: ZXCVBNM<>?
+;│ shift   │   │ ɝ │   │   │ ◌ │   │   │ ☒ │ ☐ │ ☑ │  shift │
 $!+z::Send ""
 $!+x::Send "ɝ"
 $!+c::Send ""
@@ -278,5 +299,8 @@ $!+m::Send ""
 $!+,::Send "☒"
 $!+.::Send "☐"
 $!+/::Send "☑"
+
+; --- Alt+Shift+Space: zero-width space
+!+Space::Send "{U+200B}"
 
 ; --- end
