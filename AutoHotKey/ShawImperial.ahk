@@ -1,4 +1,5 @@
 ﻿#Requires AutoHotkey v2.0
+#SingleInstance Force
 
 ; Copyright (c) 2025 Neil Raiden, LLC (AGPL v3)
 ; <https://www.gnu.org/licenses/agpl-3.0.en.html>
@@ -8,14 +9,14 @@
 
 ; _Note_: This keyboard layout **is not based** on the [Keyman Shaw Imperial](https://keyman.com/keyboards/english_shavian_igc).
 
-; ## Notes on the __Imperial Model 6__ typewriter:
-; * it had no keys ⟮`⟯ and ⟮1⟯
-; * it had no digits 0 and 1. Just like on many very old typewriters I and O was used instead
-; * it had only capital Latin letters available after using **CapsLock** lever
-; * it had no CapsLock button — just like many old typewriters it had a lever to lock the SHIFT key (actually to lock the roller pin in the upper position).
+; ## The original __Imperial Model 6__ typewriter:
+; * had no keys ⟮`⟯ and ⟮1⟯
+; * had no digits 0 and 1. Just like on many very old typewriters I and O was used instead
+; * had only capital Latin letters available after using **CapsLock** lever
+; * had no CapsLock button — just like many old typewriters it had a lever to lock the SHIFT key (actually to lock the roller pin in the upper position).
 ; * the keys ⟮3⟯ and ⟮5⟯ had Shavian letters (IPA equivalents: ⟨ɛ⟩ and ⟨e⟩) which are not in official Shavian Unicode charset. Currently the only font supporting those extra Shavian letters is only Inter Alia. So instead, the following symbols are linked ⟨𐑻⟩ and ⟨𐑺⟩ to those keys.
-; * it had no letters ⟨𐑸,𐑹,𐑿,𐑼,𐑽⟩.
-; * it had no exclamation point ⟨!⟩, no double-quote mark ⟨"⟩, no semi-colon ⟨;⟩
+; * had no letters ⟨𐑸,𐑹,𐑿,𐑼,𐑽⟩.
+; * had no exclamation point ⟨!⟩, no double-quote mark ⟨"⟩, no semi-colon ⟨;⟩
 ; * punctuation marks on the SHIFT line were: unshifted ⟨,·.⟩; shifted ⟨?-/⟩
 
 ; Possibly the lack of Shavian letters and missing punctuation marks mentioned above were among the reasons why Shavian wasn't adopted back in 1970‐ties.
@@ -34,25 +35,12 @@
 ; * tilde and double-quote mark added to the ⟮\|⟯ key
 ; * also, some of the most common punctuation marks were added to the **AltGR+Shift** layer (see tables below).
 
-; _Note_: *In Windows AltGr(Right Alt) is equivalent to Alt+Ctrl.*
+; _Note_: **In Windows AltGr(Right Alt) is equivalent to LeftAlt+Ctrl.**
 
 ; ---
-;
-; # The 3 key swaps:
-; 1. pressing Esc sends LeftAlt key-code:
-;    (system shortcuts like Ctrl+Alt+Del are now Ctrl+Esc+Del)
-$Esc::LAlt
-
-; 2. Pressing CapsLock sends Esc key-code:
-; - The "*" wildcard modifier makes the hotkey work even if extra keys are pressed. Example above: "$*CapsLock::Esc". So even then any other key is pressed simultanously with CapsLock, only "Esc" will be sent. Some people prefer using "CapsLock+key" combos to act as "Ctrl+key" -- not implemented here (yet). 
-$*CapsLock::Esc
-
-; 3. pressing LeftAlt sends RightAlt key-code:
-;    (the LeftAlt now behaves like the RightAlt - activates layer 3 and 4)
-$LAlt::RAlt
-
 ; AutoHotKey notes:
 ; - The "$" is the keyboard hook modifier (so the hotkey is only activated if actually pressed).
+; ---
 
 ; ------ Layer 1 (unshifted) ------
 ;┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬──────┐

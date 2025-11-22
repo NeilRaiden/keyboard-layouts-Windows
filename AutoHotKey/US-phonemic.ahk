@@ -1,24 +1,13 @@
 ﻿#Requires AutoHotkey v2.0
+#SingleInstance Force
 
 ; Copyright (c) 2025 Neil Raiden, LLC (AGPL v3)
 ; <https://www.gnu.org/licenses/agpl-3.0.en.html>
 
 ; ---
-; # The 3 key swaps:
-; 1. pressing Esc sends LeftAlt key-code:
-;    (system shortcuts like Ctrl+Alt+Del are now Ctrl+Esc+Del)
-$Esc::LAlt
-
-; 2. Pressing CapsLock sends Esc key-code:
-; - The "*" wildcard modifier makes the hotkey work even if extra keys are pressed. Example above: "$*CapsLock::Esc". So even then any other key is pressed simultanously with CapsLock, only "Esc" will be sent. Some people prefer using "CapsLock+key" combos to act as "Ctrl+key" -- not implemented here (yet). 
-$*CapsLock::Esc
-
-; 3. pressing LeftAlt sends RightAlt key-code:
-;    (the LeftAlt now behaves like the RightAlt - activates layer 3 and 4)
-$LAlt::RAlt
-
 ; AutoHotKey notes:
 ; - The "$" is the keyboard hook modifier (so the hotkey is only activated if actually pressed).
+; ---
 
 
 ; _Note_: Numbers row in layer 1 & 2 is exactly the same as on the regular QWERTY layout.

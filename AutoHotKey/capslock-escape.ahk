@@ -49,7 +49,63 @@ $CapsLock::Esc
 $LAlt::RAlt
 
 ; ---
-; # C. 
-; 1. Physical [CapsLock+Space] = delete last word (Windows: Ctrl+Backspace)
-; 2. RightAlt+Space = delete last line (Windows: Alt+Backspace)
+; # C. Improved "Delete"
+; 1. Shift+Space sends Backspace:
++Space::Backspace
+
+; 2. Physical [CapsLock+Space] = delete last word (Windows: Ctrl+Backspace)
 CapsLock & Space:: Send("^+{Backspace}")
+
+; 3. RightAlt+Space = delete last line (Windows: Alt+Backspace)
+; (not implemented)
+
+; ---
+; # D. Dictionary
+; open Google in default browser with (Ctrl+Win+g):
+;^#g::Run("https://google.com")
+;; open TFD.com in default browser with (Ctrl+Win+d):
+;; to do: copy selected text to Clipboard, then to variable, and attach to the link
+^#d::Run("https://www.tfd.com")
+
+; # E. Date and Time
+; 1. current date ( Ctrl+; in Excel):
+^;::SendDateString()
+
+SendDateString() {
+    SendMode('Event')
+    SetKeyDelay( -1, -1)
+;    timestamp := FormatTime( A_Now, 'ddd dd-MMM  HH:mm')
+    timestamp := FormatTime( A_Now, 'yyyy-MM-dd')
+    Send(timestamp)
+}
+
+; 2. current time (Ctrl+Shift+; in Excel):
+^+;::SendTimeString()
+
+SendTimeString() {
+    SendMode('Event')
+    SetKeyDelay( -1, -1)
+    timestamp := FormatTime( A_Now, 'HH:mm:ss')
+    Send(timestamp)
+}
+
+; 3. current date (for journal)
+^'::SendDateLongString()
+
+SendDateLongString() {
+    SendMode('Event')
+    SetKeyDelay( -1, -1)
+    timestamp := FormatTime( A_Now, 'ddd dd, MMM yyyy')
+    Send(timestamp)
+}
+
+; 4. current time (Ctrl+Shift+; in Excel):
+^"::SendTimeShortString()
+
+SendTimeShortString() {
+    SendMode('Event')
+    SetKeyDelay( -1, -1)
+    timestamp := FormatTime( A_Now, 'HH:mm')
+    Send(timestamp)
+}
+; ---
