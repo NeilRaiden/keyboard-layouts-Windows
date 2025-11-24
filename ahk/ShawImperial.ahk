@@ -1,8 +1,20 @@
 ﻿#Requires AutoHotkey v2.0
 #SingleInstance Force
+Persistent
 
 ; Copyright (c) 2025 Neil Raiden, LLC (AGPL v3)
 ; <https://www.gnu.org/licenses/agpl-3.0.en.html>
+
+; ---
+; 1. pressing Esc sends LeftAlt key-code:
+$Esc::LAlt
+; 2. Pressing CapsLock sends Esc key-code:
+$CapsLock::Esc
+; 3. pressing LeftAlt sends RightAlt key-code:
+$LAlt::RAlt
+; 4. Physical [Shift+Space] = delete last word (Windows: Ctrl+Backspace)
++Space::Send("^+{Backspace}")
+; ---
 
 ;# Keyboard Layout (Shavian Imperial)
 ; This keyboard layout is based on __Imperial Good Companion Model 6__ typewriter.

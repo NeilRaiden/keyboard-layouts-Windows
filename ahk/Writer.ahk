@@ -1,13 +1,26 @@
 ﻿#Requires AutoHotkey v2.0
 #SingleInstance Force
+Persistent
 
 ; Copyright (c) 2025 Neil Raiden, LLC (AGPL v3)
 ; <https://www.gnu.org/licenses/agpl-3.0.en.html>
 
 ; ---
+; 1. pressing Esc sends LeftAlt key-code:
+$Esc::LAlt
+; 2. Pressing CapsLock sends Esc key-code:
+$CapsLock::Esc
+; 3. pressing LeftAlt sends RightAlt key-code:
+$LAlt::RAlt
+; 4. Physical [Shift+Space] = delete last word (Windows: Ctrl+Backspace)
++Space::Send("^+{Backspace}")
+; ---
+
+; ---
 ; AutoHotKey notes:
 ; - The "$" is the keyboard hook modifier (so the hotkey is only activated if actually pressed).
 ; ---
+
 
 ; _Note_: Layer 1 (unshifted) and Layer 2 (shifted) are exactly the same as on the regular QWERTY layout.
 
@@ -16,13 +29,15 @@
 ;┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬──────┐
 ;│ ´ │ ¹ │ ² │ ³ │ ⁴ │ ⁵ │ ⁶ │ ⁷ │ ⁸ │ ⁹ │ ⁰ │ → │ ≠ │ bksp │
 ;├───┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬────┤
-;│ tab │ ɜ │ ʍ │ ɛ │ ɹ │ θ │ ə │ ʊ │ ɪ │ ɔ │ ɒ │ ⟨ │ ⟩ │ •  │
+;│ tab │ … │ ◌̀ │ ◌́ │ ® │ ™ │ √ │ ↑ │ ◌̈ │ ø │ ℗ │ ⟨ │ ⟩ │ •  │
 ;├─────┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴────┤
-;│ caps  │ ɑ │ ʃ │ ð │ ɐ │ ɡ │ ‐ │ ʤ │ ʰ │ ɫ │ ː │ ᵊ │  ent │
+;│ caps  │ “ │ ” │ ↓ │ ° │ æ │ ‐ │ œ │ « │ » │ § │ × │  ent │
 ;├───────┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴──────┤
-;│ shift   │ ʒ │ æ │ ʧ │ ʌ │ · │ ŋ │ ◌̃ │ ˈ │ ˌ │ ʔ │  shift │
+;│ shift   │ ‘ │ ’ │ © │ ⁃ │ · │ – │ — │ ‹ │ › │ ÷ │  shift │
 ;└─────────┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴────────┘
-; Alt+m ◌̃ - (U+0303) combining tilde (for nasalization)
+; shift+w ◌̀ U+0300 combining grave mark
+; shift+e ◌́ U+0301 combining acute mark
+; shift+i ◌̈ U+0308 combining diaeresis (umlaut)
 
 ; --- number row:
 ;│ ´ │ ¹ │ ² │ ³ │ ⁴ │ ⁵ │ ⁶ │ ⁷ │ ⁸ │ ⁹ │ ⁰ │ → │ ≠ │ bksp │
@@ -41,47 +56,47 @@ $!-::Send "→"
 $!=::Send "≠"
 
 ; --- TAB row:
-;│ tab │ ɜ │ ʍ │ ɛ │ ɹ │ θ │ ə │ ʊ │ ɪ │ ɔ │ ɒ │ ⟨ │ ⟩ │ •  │
-$!q::Send "ɜ"
-$!w::Send "ʍ"
-$!e::Send "ɛ"
-$!r::Send "ɹ"
-$!t::Send "θ"
-$!y::Send "ə"
-$!u::Send "ʊ"
-$!i::Send "ɪ"
-$!o::Send "ɔ"
-$!p::Send "ɒ"
+;│ tab │ … │ ◌̀ │ ◌́ │ ® │ ™ │ √ │ ↑ │ ◌̈ │ ø │ ℗ │ ⟨ │ ⟩ │ •  │
+$!q::Send "…"
+$!w::Send "̀" ; U+0300 combining grave mark
+$!e::Send "́" ; U+0301 combining acute mark
+$!r::Send "®"
+$!t::Send "™"
+$!y::Send "√"
+$!u::Send "↑"
+$!i::Send "̈"  ; U+0308 combining diaeresis (umlaut)
+$!o::Send "ø"
+$!p::Send "℗"
 $![::Send "⟨"
 $!]::Send "⟩"
 $!\::Send "•"
 
 ; --- CapsL-Enter row:
-;│ caps  │ ɑ │ ʃ │ ð │ ɐ │ ɡ │ ‐ │ ʤ │ ʰ │ ɫ │ ː │ ᵊ │  ent │
-$!a::Send "ɑ"
-$!s::Send "ʃ"
-$!d::Send "ð"
-$!f::Send "ɐ"
-$!g::Send "ɡ"
+;│ caps  │ “ │ ” │ ↓ │ ° │ æ │ ‐ │ œ │ « │ » │ § │ × │  ent │
+$!a::Send "“"
+$!s::Send "”"
+$!d::Send "↓"
+$!f::Send "°"
+$!g::Send "æ"
 $!h::Send "‐"
-$!j::Send "ʤ"
-$!k::Send "ʰ"
-$!l::Send "ɫ"
-$!;::Send "ː"
-$!'::Send "ᵊ"
+$!j::Send "œ"
+$!k::Send "«"
+$!l::Send "»"
+$!;::Send "§"
+$!'::Send "×"
 
 ; --- Shift row:
-;│ shift   │ ʒ │ æ │ ʧ │ ʌ │ · │ ŋ │ ◌̃ │ ˈ │ ˌ │ ʔ │  shift │
-$!z::Send "ʒ"
-$!x::Send "æ"
-$!c::Send "ʧ"
-$!v::Send "ʌ"
+;│ shift   │ ‘ │ ’ │ © │ ⁃ │ · │ – │ — │ ‹ │ › │ ÷ │  shift │
+$!z::Send "‘"
+$!x::Send "’"
+$!c::Send "©"
+$!v::Send "⁃"
 $!b::Send "·"
-$!n::Send "ŋ"
-$!m::Send "̃" ; Alt+m ◌̃ - (U+0303) combining tilde (for nasalization)
-$!,::Send "ˈ"
-$!.::Send "ˌ"
-$!/::Send "ʔ"
+$!n::Send "–"
+$!m::Send "—"
+$!,::Send "‹"
+$!.::Send "›"
+$!/::Send "÷"
 
 ; --- Alt+Space: Em-Space (space length equal to font height)
 !Space::Send "{U+2003}"
@@ -91,16 +106,13 @@ $!/::Send "ʔ"
 ;┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬──────┐
 ;│ ≈ │ ₁ │ ₂ │ ₃ │ ₄ │ ₅ │ ₆ │ ₇ │ ₈ │ ₉ │ ₀ │ ← │ ± │ bksp │
 ;├───┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬────┤
-;│ tab │ ɝ │ ◌̀ │ ◌́ │ ʳ │ ɾ │ ɚ │ ↑ │   │ ◌ │   │ ⟮ │ ⟯ │ ◦  │
+;│ tab │ ⌜ │ ⌝ │ ⌞ │ ⌟ │ ‰ │   │   │   │ Ø │ π │ ⟮ │ ⟯ │ ◦  │
 ;├─────┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴────┤
-;│ caps  │ “ │ ” │ ↓ │ ◌̄ │ ◌̱ │ ‑ │   │ « │ » │ § │ × │  ent │
+;│ caps  │ ⊞ │ ☺ │   │   │ Æ │ ‑ │ Œ │   │ ₤ │   │   │  ent │
 ;├───────┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴──────┤
-;│ shift   │ ‘ │ ’ │ … │ ⁃ │ ○ │ – │ — │ ‹ │ › │ ÷ │  shift │
+;│ shift   │ ⌥ │ ⌘ │ ¢ │ ⌃ │ ○ │ ◌̃ │ µ │ ☒ │ ☐ │ ☑ │  shift │
 ;└─────────┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴────────┘
-; Alt+Shift+w ◌̀  - U+0300 combining grave accent
-; Alt+Shift+e ◌́  - U+0301 combining acute accent
-; Alt+Shift+f ◌̄  - U+0304 combining macron
-; Alt+Shift+g ◌̱  - U+0331 combining macron below
+; Alt+Shift+n ◌̃  U+0303 - combining tilde
 
 ; --- number row: ~!@#$%^&*()_+
 ;│ ≈ │ ₁ │ ₂ │ ₃ │ ₄ │ ₅ │ ₆ │ ₇ │ ₈ │ ₉ │ ₀ │ ← │ ± │ bksp │
@@ -119,47 +131,47 @@ $!+-::Send "←"
 $!+=::Send "±"
 
 ; --- TAB row: QWERTYUIOP{}|
-;│ tab │ ɝ │ ◌̀ │ ◌́ │ ʳ │ ɾ │ ɚ │ ↑ │   │ ◌ │   │ ⟮ │ ⟯ │ ◦  │
-$!+q::Send "ɝ"
-$!+w::Send "̀"   ; Alt+Shift+w ◌̀  - U+0300 combining grave accent
-$!+e::Send "́"   ; Alt+Shift+e ◌́  - U+0301 combining acute accent
-$!+r::Send "ʳ"
-$!+t::Send "ɾ"
-$!+y::Send "ɚ"
-$!+u::Send "↑"
+;│ tab │ ⌜ │ ⌝ │ ⌞ │ ⌟ │ ‰ │   │   │   │ Ø │ π │ ⟮ │ ⟯ │ ◦  │
+$!+q::Send "⌜"
+$!+w::Send "⌝"
+$!+e::Send "⌞" 
+$!+r::Send "⌟"
+$!+t::Send "‰"
+$!+y::Send ""
+$!+u::Send ""
 $!+i::Send ""
-$!+o::Send "◌"  ; Alt+Shift+o ◌ - U+25cc dotted circle
-$!+p::Send ""
+$!+o::Send "Ø"
+$!+p::Send "π"
 $!+[::Send "⟮"
 $!+]::Send "⟯"
 $!+\::Send "◦"
 
 ; --- CapsL-Enter row: ASDFGHJKL:"
-;│ caps  │ “ │ ” │ ↓ │ ◌̄ │ ◌̱ │ ‑ │   │ « │ » │ § │ × │  ent │
-$!+a::Send "“"
-$!+s::Send "”"
-$!+d::Send "↓"
-$!+f::Send "̄"   ; Alt+Shift+f ◌̄  - U+0304 combining macron
-$!+g::Send "̱"   ; Alt+Shift+g ◌̱  - U+0331 combining macron below
+;│ caps  │ ⊞ │ ☺ │   │   │ Æ │ ‑ │ Œ │   │ ₤ │   │   │  ent │
+$!+a::Send "⊞"  ; U+229E, known as "SQUARED PLUS" (⊞) - substitute for Windows logo
+$!+s::Send "☺"
+$!+d::Send ""
+$!+f::Send ""
+$!+g::Send "Æ"
 $!+h::Send "‑"
-$!+j::Send ""
-$!+k::Send "«"
-$!+l::Send "»"
-$!+;::Send "§"
-$!+'::Send "×"
+$!+j::Send "Œ"
+$!+k::Send ""
+$!+l::Send "₤"
+$!+;::Send ""
+$!+'::Send ""
 
 ; --- Shift row: ZXCVBNM<>?
-;│ shift   │ ‘ │ ’ │ … │ ⁃ │ ○ │ – │ — │ ‹ │ › │ ÷ │  shift │
-$!+z::Send "‘"
-$!+x::Send "’"
-$!+c::Send "…"
-$!+v::Send "⁃"
+;│ shift   │ ⌥ │ ⌘ │ ¢ │ ⌃ │ ○ │ ◌̃ │ µ │ ☒ │ ☐ │ ☑ │  shift │
+$!+z::Send "⌥"
+$!+x::Send "⌘"
+$!+c::Send "¢"
+$!+v::Send "⌃"
 $!+b::Send "○"
-$!+n::Send "–"
-$!+m::Send "—"
-$!+,::Send "‹"
-$!+.::Send "›"
-$!+/::Send "÷"
+$!+n::Send "̃" ; U+0303 - combining tilde
+$!+m::Send "µ"
+$!+,::Send "☒"
+$!+.::Send "☐"
+$!+/::Send "☑"
 
 ; --- Alt+Shift+Space: zero-width space
 !+Space::Send "{U+200B}"

@@ -1,8 +1,20 @@
 ﻿#Requires AutoHotkey v2.0
 #SingleInstance Force
+Persistent
 
 ; Copyright (c) 2025 Neil Raiden, LLC (AGPL v3)
 ; <https://www.gnu.org/licenses/agpl-3.0.en.html>
+
+; ---
+; 1. pressing Esc sends LeftAlt key-code:
+$Esc::LAlt
+; 2. Pressing CapsLock sends Esc key-code:
+$CapsLock::Esc
+; 3. pressing LeftAlt sends RightAlt key-code:
+$LAlt::RAlt
+; 4. Physical [Shift+Space] = delete last word (Windows: Ctrl+Backspace)
++Space::Send("^+{Backspace}")
+; ---
 
 ; ---
 ; AutoHotKey notes:
@@ -10,6 +22,7 @@
 ; ---
 
 ; _Note_: Numbers row in layer 1 & 2 is exactly the same as on the regular QWERTY layout, except for the pound sign "£" in place of hash "#".
+
 
 ; ------ Layer 1 (unshifted) ------
 ;┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬──────┐
@@ -19,10 +32,8 @@
 ;├─────┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴────┤
 ;│ caps  │ ə │ s │ d │ f │ ɡ │ h │ j │ k │ l │ ; │ ' │  ent │
 ;├───────┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴──────┤
-;│ shift   │ z │ɜːʳ│tʃ │ v │ b │ n │ m │ , │ . │ / │  shift │
+;│ shift   │ z │ɜːr│tʃ │ v │ b │ n │ m │ , │ . │ / │  shift │
 ;└─────────┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴────────┘
-
-; --- numbers row is the same as on standard layout.
 
 ; --- TAB row:
 ;│ tab │ɔɪ │ w │ ɛ │ r │ t │ɑː │ ʌ │ ɪ │ ɒ │ p │ [ │ ] │ \  │
@@ -31,8 +42,8 @@ $w::Send "w"
 $e::Send "ɛ"
 $r::Send "r"
 $t::Send "t"
-;$y::Send "ɑ"  ; US
-$y::Send "ɑː"  ; UK
+;$y::Send "ɑ"    ; US
+$y::Send "ɑː"    ; UK
 $u::Send "ʌ"
 $i::Send "ɪ"
 $o::Send "ɒ"
@@ -47,7 +58,7 @@ $a::Send "ə"
 $s::Send "s"
 $d::Send "d"
 $f::Send "f"
-$g::Send "ɡ" ; U+0261 (not "g" U+0067)
+$g::Send "ɡ"     ; U+0261 (not "g" U+0067)
 $h::Send "h"
 $j::Send "j"
 $k::Send "k"
@@ -56,11 +67,11 @@ $;::Send ";"
 $'::Send "'"
 
 ; --- Shift row:
-;│ shift   │ z │ɜːʳ│tʃ │ v │ b │ n │ m │ , │ . │ / │  shift │
+;│ shift   │ z │ɜːr│tʃ │ v │ b │ n │ m │ , │ . │ / │  shift │
 $z::Send "z"
-;$x::Send "ɜr"  ; US
-$x::Send "ɜːʳ"  ; UK
-;$x::Send "ɜːr" ; UK-rhotic
+;$x::Send "ɜr"   ; US
+;$x::Send "ɜːʳ"  ; UK
+$x::Send "ɜːr"   ; UK-rhotic
 $c::Send "tʃ"
 $v::Send "v"
 $b::Send "b"
@@ -70,29 +81,30 @@ $,::Send ","
 $.::Send "."
 $/::Send "/"
 
+
 ; ------ Layer 2 (shifted) ------
 ;┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬──────┐
 ;│ ~ │ ! │ @ │ £ │ $ │ % │ ^ │ & │ * │ ( │ ) │ _ │ + │ bksp │
 ;├───┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬────┤
-;│ tab │aʊ │ɪə │eɪ │ɑːʳ│ θ │ɔː │ ʊ │iː │əʊ │ɔːʳ│ { │ } │ |  │
+;│ tab │aʊ │ɪə │eɪ │ɑːr│ θ │ɔː │ ʊ │iː │əʊ │ɔːr│ { │ } │ |  │
 ;├─────┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴────┤
-;│ caps  │ æ │ ʃ │əʳ │aɪ │ · │ ð │dʒ │ « │ » │ : │ " │  ent │
+;│ caps  │ æ │ ʃ │ər │aɪ │ · │ ð │dʒ │ « │ » │ : │ " │  ent │
 ;├───────┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴──────┤
-;│ shift   │ ʒ │eəʳ│ɪəʳ│juː│ ⸰ │ ŋ │uː │ ‹ │ › │ ? │  shift │
+;│ shift   │ ʒ │eər│ɪər│juː│ ⸰ │ ŋ │uː │ ‹ │ › │ ? │  shift │
 ;└─────────┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴────────┘
 
-; --- numbers row is the same except for the pound sing:
+; --- numbers row:
 ;│ ~ │ ! │ @ │ £ │ $ │ % │ ^ │ & │ * │ ( │ ) │ _ │ + │ bksp │
 $+3::Send "£"
 
 ; --- TAB row:
-;│ tab │aʊ │ɪə │eɪ │ɑːʳ│ θ │ɔː │ ʊ │iː │əʊ │ɔːʳ│ { │ } │ |  │
+;│ tab │aʊ │ɪə │eɪ │ɑːr│ θ │ɔː │ ʊ │iː │əʊ │ɔːr│ { │ } │ |  │
 $+q::Send "aʊ"
 $+w::Send "ɪə"
 $+e::Send "eɪ"
 ;$+r::Send "ɑr"  ; US
-$+r::Send "ɑːʳ"  ; UK
-;$+r::Send "ɑːr" ; UK-rhotic
+;$+r::Send "ɑːʳ" ; UK
+$+r::Send "ɑːr"  ; UK-rhotic
 $+t::Send "θ"
 ;$+y::Send "ɔ"   ; US
 $+y::Send "ɔː"   ; UK
@@ -102,18 +114,18 @@ $+i::Send "iː"   ; UK
 ;$+o::Send "ɔʊ"  ; US
 $+o::Send "əʊ"   ; UK
 ;$+p::Send "ɔr"  ; US
-$+p::Send "ɔːʳ"  ; UK
-;$+p::Send "ɔːr" ; UK-rhotic
+;$+p::Send "ɔːʳ" ; UK
+$+p::Send "ɔːr"  ; UK-rhotic
 $+[::Send "{{}"
 $+]::Send "{}}"
 $+\::Send "|"
 
 ; --- CapsLock row:
-;│ caps  │ æ │ ʃ │əʳ │aɪ │ · │ ð │dʒ │ « │ » │ : │ " │  ent │
+;│ caps  │ æ │ ʃ │ər │aɪ │ · │ ð │dʒ │ « │ » │ : │ " │  ent │
 $+a::Send "æ"
 $+s::Send "ʃ"
-;$+d::Send "ər"  ; US = UK rhotic
-$+d::Send "əʳ"   ; UK
+$+d::Send "ər"   ; US = UK rhotic
+;$+d::Send "əʳ"  ; UK
 $+f::Send "aɪ"
 $+g::Send "·"
 $+h::Send "ð"
@@ -124,13 +136,13 @@ $+;::Send ":"
 $+'::Send '"'
 
 ; --- Shift row:
-;│ shift   │ ʒ │eəʳ│ɪəʳ│juː│ ⸰ │ ŋ │uː │ ‹ │ › │ ? │  shift │
+;│ shift   │ ʒ │eər│ɪər│juː│ ⸰ │ ŋ │uː │ ‹ │ › │ ? │  shift │
 $+z::Send "ʒ"
 ;$+x::Send "er"  ; US
-$+x::Send "eəʳ"  ; UK
-;$+x::Send "eər" ; UK-rhotic
-;$+c::Send "ɪər" ; US = UK-rhotic (or "ɪr" in US?)
-$+c::Send "ɪəʳ"  ; UK
+;$+x::Send "eəʳ" ; UK
+$+x::Send "eər"  ; UK-rhotic
+$+c::Send "ɪər"  ; US = UK-rhotic (or "ɪr" in US?)
+;$+c::Send "ɪəʳ" ; UK
 ;$+v::Send "ju"  ; US
 $+v::Send "juː"  ; UK
 $+b::Send "⸰"
@@ -142,7 +154,7 @@ $+.::Send "›"
 $+/::Send "?"
 
 
-; ------ Layer 3 (Alt+key) ------
+; ------ layer 3 (Alt+key) ------
 ;┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬──────┐
 ;│ ´ │ ¹ │ ² │ ³ │ ⁴ │ ⁵ │ ⁶ │ ⁷ │ ⁸ │ ⁹ │ ⁰ │ → │ ≠ │ bksp │
 ;├───┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬────┤

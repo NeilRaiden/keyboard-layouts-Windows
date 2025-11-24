@@ -1,37 +1,49 @@
 ﻿#Requires AutoHotkey v2.0
 #SingleInstance Force
+Persistent
 
 ; Copyright (c) 2025 Neil Raiden, LLC (AGPL v3)
 ; <https://www.gnu.org/licenses/agpl-3.0.en.html>
+
+; ---
+; 1. pressing Esc sends LeftAlt key-code:
+$Esc::LAlt
+; 2. Pressing CapsLock sends Esc key-code:
+$CapsLock::Esc
+; 3. pressing LeftAlt sends RightAlt key-code:
+$LAlt::RAlt
+; 4. Physical [Shift+Space] = delete last word (Windows: Ctrl+Backspace)
++Space::Send("^+{Backspace}")
+; ---
 
 ; ---
 ; AutoHotKey notes:
 ; - The "$" is the keyboard hook modifier (so the hotkey is only activated if actually pressed).
 ; ---
 
-; _Note_: Numbers row in layer 1 & 2 is exactly the same as on the regular QWERTY layout, except for the pound sign "£" in place of hash "#".
 
+; _Note_: Numbers row in layer 1 & 2 is exactly the same as on the regular QWERTY layout.
 
 ; ------ Layer 1 (unshifted) ------
 ;┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬──────┐
 ;│ ` │ 1 │ 2 │ 3 │ 4 │ 5 │ 6 │ 7 │ 8 │ 9 │ 0 │ - │ = │ bksp │
 ;├───┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬────┤
-;│ tab │ɔɪ │ w │ ɛ │ r │ t │ɑː │ ʌ │ ɪ │ ɒ │ p │ [ │ ] │ \  │
+;│ tab │ɔɪ │ w │ ɛ │ r │ t │ ɑ │ ʌ │ ɪ │ ɒ │ p │ [ │ ] │ \  │
 ;├─────┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴────┤
 ;│ caps  │ ə │ s │ d │ f │ ɡ │ h │ j │ k │ l │ ; │ ' │  ent │
 ;├───────┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴──────┤
-;│ shift   │ z │ɜːr│tʃ │ v │ b │ n │ m │ , │ . │ / │  shift │
+;│ shift   │ z │ɜr │tʃ │ v │ b │ n │ m │ , │ . │ / │  shift │
 ;└─────────┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴────────┘
 
 ; --- TAB row:
-;│ tab │ɔɪ │ w │ ɛ │ r │ t │ɑː │ ʌ │ ɪ │ ɒ │ p │ [ │ ] │ \  │
+;│ tab │ɔɪ │ w │ ɛ │ r │ t │ ɑ │ ʌ │ ɪ │ ɒ │ p │ [ │ ] │ \  │
 $q::Send "ɔɪ"
 $w::Send "w"
 $e::Send "ɛ"
 $r::Send "r"
 $t::Send "t"
-;$y::Send "ɑ"    ; US
-$y::Send "ɑː"    ; UK
+$y::Send "ɑ"     ; US
+;$y::Send "ɑː"   ; UK
 $u::Send "ʌ"
 $i::Send "ɪ"
 $o::Send "ɒ"
@@ -55,11 +67,11 @@ $;::Send ";"
 $'::Send "'"
 
 ; --- Shift row:
-;│ shift   │ z │ɜːr│tʃ │ v │ b │ n │ m │ , │ . │ / │  shift │
+;│ shift   │ z │ɜr │tʃ │ v │ b │ n │ m │ , │ . │ / │  shift │
 $z::Send "z"
-;$x::Send "ɜr"   ; US
+$x::Send "ɜr"    ; US
 ;$x::Send "ɜːʳ"  ; UK
-$x::Send "ɜːr"   ; UK-rhotic
+;$x::Send "ɜːr"  ; UK-rhotic
 $c::Send "tʃ"
 $v::Send "v"
 $b::Send "b"
@@ -69,41 +81,36 @@ $,::Send ","
 $.::Send "."
 $/::Send "/"
 
-
 ; ------ Layer 2 (shifted) ------
 ;┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬──────┐
-;│ ~ │ ! │ @ │ £ │ $ │ % │ ^ │ & │ * │ ( │ ) │ _ │ + │ bksp │
+;│ ~ │ ! │ @ │ # │ $ │ % │ ^ │ & │ * │ ( │ ) │ _ │ + │ bksp │
 ;├───┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬────┤
-;│ tab │aʊ │ɪə │eɪ │ɑːr│ θ │ɔː │ ʊ │iː │əʊ │ɔːr│ { │ } │ |  │
+;│ tab │aʊ │ɪə │eɪ │ɑr │ θ │ ɔ │ ʊ │ i │ɔʊ │ɔr │ { │ } │ |  │
 ;├─────┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴────┤
 ;│ caps  │ æ │ ʃ │ər │aɪ │ · │ ð │dʒ │ « │ » │ : │ " │  ent │
 ;├───────┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴──────┤
-;│ shift   │ ʒ │eər│ɪər│juː│ ⸰ │ ŋ │uː │ ‹ │ › │ ? │  shift │
+;│ shift   │ ʒ │er │ɪər│ju │ ⸰ │ ŋ │ u │ ‹ │ › │ ? │  shift │
 ;└─────────┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴────────┘
 
-; --- numbers row:
-;│ ~ │ ! │ @ │ £ │ $ │ % │ ^ │ & │ * │ ( │ ) │ _ │ + │ bksp │
-$+3::Send "£"
-
 ; --- TAB row:
-;│ tab │aʊ │ɪə │eɪ │ɑːr│ θ │ɔː │ ʊ │iː │əʊ │ɔːr│ { │ } │ |  │
+;│ tab │aʊ │ɪə │eɪ │ɑr │ θ │ ɔ │ ʊ │ i │ɔʊ │ɔr │ { │ } │ |  │
 $+q::Send "aʊ"
 $+w::Send "ɪə"
 $+e::Send "eɪ"
-;$+r::Send "ɑr"  ; US
+$+r::Send "ɑr"   ; US
 ;$+r::Send "ɑːʳ" ; UK
-$+r::Send "ɑːr"  ; UK-rhotic
+;$+r::Send "ɑːr" ; UK-rhotic
 $+t::Send "θ"
-;$+y::Send "ɔ"   ; US
-$+y::Send "ɔː"   ; UK
+$+y::Send "ɔ"    ; US
+;$+y::Send "ɔː"  ; UK
 $+u::Send "ʊ"
-;$+i::Send "i"   ; US
-$+i::Send "iː"   ; UK
-;$+o::Send "ɔʊ"  ; US
-$+o::Send "əʊ"   ; UK
-;$+p::Send "ɔr"  ; US
+$+i::Send "i"    ; US
+;$+i::Send "iː"  ; UK
+$+o::Send "ɔʊ"   ; US
+;$+o::Send "əʊ"  ; UK
+$+p::Send "ɔr"   ; US
 ;$+p::Send "ɔːʳ" ; UK
-$+p::Send "ɔːr"  ; UK-rhotic
+;$+p::Send "ɔːr" ; UK-rhotic
 $+[::Send "{{}"
 $+]::Send "{}}"
 $+\::Send "|"
@@ -112,7 +119,7 @@ $+\::Send "|"
 ;│ caps  │ æ │ ʃ │ər │aɪ │ · │ ð │dʒ │ « │ » │ : │ " │  ent │
 $+a::Send "æ"
 $+s::Send "ʃ"
-$+d::Send "ər"   ; US = UK rhotic
+$+d::Send "ər"   ; US
 ;$+d::Send "əʳ"  ; UK
 $+f::Send "aɪ"
 $+g::Send "·"
@@ -124,29 +131,29 @@ $+;::Send ":"
 $+'::Send '"'
 
 ; --- Shift row:
-;│ shift   │ ʒ │eər│ɪər│juː│ ⸰ │ ŋ │uː │ ‹ │ › │ ? │  shift │
+;│ shift   │ ʒ │er │ɪər│ju │ ⸰ │ ŋ │ u │ ‹ │ › │ ? │  shift │
 $+z::Send "ʒ"
-;$+x::Send "er"  ; US
+$+x::Send "er"   ; US
 ;$+x::Send "eəʳ" ; UK
-$+x::Send "eər"  ; UK-rhotic
-$+c::Send "ɪər"  ; US = UK-rhotic (or "ɪr" in US?)
-;$+c::Send "ɪəʳ" ; UK
-;$+v::Send "ju"  ; US
-$+v::Send "juː"  ; UK
+;$+x::Send "eər" ; UK-rhotic
+$+c::Send "ɪər"  ; US (or "ɪr"?)
+;$+c::Send "ɪər" ; UK
+$+v::Send "ju"   ; US
+;$+v::Send "juː" ; UK
 $+b::Send "⸰"
 $+n::Send "ŋ"
-;$+m::Send "u"   ; US
-$+m::Send "uː"   ; UK
+$+m::Send "u"    ; US
+;$+m::Send "uː"  ; UK
 $+,::Send "‹"
 $+.::Send "›"
 $+/::Send "?"
 
 
-; ------ layer 3 (Alt+key) ------
+; ------ Layer 3 (Alt+key) ------
 ;┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬──────┐
 ;│ ´ │ ¹ │ ² │ ³ │ ⁴ │ ⁵ │ ⁶ │ ⁷ │ ⁸ │ ⁹ │ ⁰ │ → │ ≠ │ bksp │
 ;├───┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬────┤
-;│ tab │ … │ ʍ │ e │ ʳ │ ɾ │ # │ ↑ │   │ ˈ │ ˌ │ ⟨ │ ⟩ │ •  │
+;│ tab │ … │ ʍ │ e │ ʳ │ ɾ │   │ ↑ │   │ ˈ │ ˌ │ ⟨ │ ⟩ │ •  │
 ;├─────┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴────┤
 ;│ caps  │ “ │ ” │ ↓ │ ° │ ʔ │ ‐ │ ʤ │ ≤ │ ≥ │ ː │ × │  ent │
 ;├───────┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴──────┤
@@ -170,13 +177,13 @@ $!-::Send "→"
 $!=::Send "≠"
 
 ; --- TAB row:
-;│ tab │ … │ ʍ │ e │ ʳ │ ɾ │ # │ ↑ │   │ ˈ │ ˌ │ ⟨ │ ⟩ │ •  │
+;│ tab │ … │ ʍ │ e │ ʳ │ ɾ │   │ ↑ │   │ ˈ │ ˌ │ ⟨ │ ⟩ │ •  │
 $!q::Send "…"
 $!w::Send "ʍ"
 $!e::Send "e"
 $!r::Send "ʳ"
 $!t::Send "ɾ"
-$!y::Send "{#}"
+$!y::Send ""
 $!u::Send "↑"
 $!i::Send ""
 $!o::Send "ˈ"
@@ -215,7 +222,6 @@ $!/::Send "÷"
 ; --- Alt+Space: Em-Space (space length equal to font height)
 !Space::Send "{U+2003}"
 
-
 ; ------ Layer 4 (Alt+Shift+key) ------
 ;┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬──────┐
 ;│ ≈ │ ₁ │ ₂ │ ₃ │ ₄ │ ₅ │ ₆ │ ₇ │ ₈ │ ₉ │ ₀ │ ← │ ± │ bksp │
@@ -227,7 +233,7 @@ $!/::Send "÷"
 ;│ shift   │   │ ɝ │   │   │ ◌ │   │   │ ☒ │ ☐ │ ☑ │  shift │
 ;└─────────┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴────────┘
 
-; --- number row: ~!@£$%^&*()_+
+; --- number row: ~!@#$%^&*()_+
 ;│ ≈ │ ₁ │ ₂ │ ₃ │ ₄ │ ₅ │ ₆ │ ₇ │ ₈ │ ₉ │ ₀ │ ← │ ± │ bksp │
 $!+`::Send "≈"
 $!+1::Send "₁"
@@ -261,7 +267,6 @@ $!+\::Send "◦"
 
 ; --- CapsL-Enter row: ASDFGHJKL:"
 ;│ caps  │ ɐ │ ☺ │ ɚ │   │ ˀ │ ‑ │   │   │ ɫ │ § │   │  ent │
-;$!+a::Send "⊞"  ; U+229E, known as "SQUARED PLUS" (⊞) - substitute for Windows logo
 $!+a::Send "ɐ"
 $!+s::Send "☺"
 $!+d::Send "ɚ"
